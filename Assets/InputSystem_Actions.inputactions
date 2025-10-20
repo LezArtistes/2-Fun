@@ -7,21 +7,39 @@
             "id": "c88e0238-2300-4d58-b988-67c2cf24d312",
             "actions": [
                 {
-                    "name": "PlayerOne",
+                    "name": "PlayerOnePress",
                     "type": "Button",
                     "id": "036c96cb-1dbe-4688-8def-92832e06b4c5",
                     "expectedControlType": "",
                     "processors": "",
-                    "interactions": "",
+                    "interactions": "Press",
                     "initialStateCheck": false
                 },
                 {
-                    "name": "PlayerTwo",
+                    "name": "PlayerOneRelease",
+                    "type": "Button",
+                    "id": "435a18e2-94b4-4018-915f-4fec7953817f",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "Press(behavior=1)",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "PlayerTwoPress",
                     "type": "Button",
                     "id": "2db66f8c-5521-4470-b846-730f1b9ad914",
                     "expectedControlType": "",
                     "processors": "",
-                    "interactions": "",
+                    "interactions": "Press",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "PlayerTwoRelease",
+                    "type": "Button",
+                    "id": "ccaee8fb-800c-46b8-bf2f-9350eac6e7bb",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "Press(behavior=1)",
                     "initialStateCheck": false
                 }
             ],
@@ -33,7 +51,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "PlayerOne",
+                    "action": "PlayerOnePress",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -44,7 +62,29 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "PlayerTwo",
+                    "action": "PlayerTwoPress",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "8349bc2d-40f9-4cbc-8948-ab887457642a",
+                    "path": "<Keyboard>/enter",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "PlayerTwoRelease",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "0b3fb63a-b552-44bb-bfe3-a452e6eab996",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse",
+                    "action": "PlayerOneRelease",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
