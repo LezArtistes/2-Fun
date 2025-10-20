@@ -1,0 +1,71 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &8736148789521513063
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4952124538113537664}
+  - component: {fileID: 4045525424937591505}
+  m_Layer: 0
+  m_Name: ===PoolManager===
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4952124538113537664
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8736148789521513063}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.27015, y: 0.17649, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4045525424937591505
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8736148789521513063}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68a91d653c1c9eb44bfbbe9cc7b7ce9f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+  smallAsteroidSprite: {fileID: -5588199421929617338, guid: e1dd9d12a54458a4e8a5f4f6c92cdb1d, type: 3}
+  mediumAsteroidSprite: {fileID: -5837033827397220031, guid: c05561c82eca6e34380b46b757ac9b85, type: 3}
+  largeAsteroidSprite: {fileID: -8070400435829822609, guid: 7022361f2660bd344afabbfbcdca4aa5, type: 3}
+  smallAsteroidScale: {x: 1, y: 1, z: 1}
+  mediumAsteroidScale: {x: 1.2, y: 1.2, z: 1.2}
+  largeAsteroidScale: {x: 1.3, y: 1.3, z: 1.3}
+  enableScaleVariation: 1
+  scaleVariation: 0.2
+  smallAsteroidWeight: 60
+  mediumAsteroidWeight: 30
+  largeAsteroidWeight: 10
+  poolSize: 30
+  columnCount: 6
+  columnWidth: 2.81
+  spawnHeight: 10
+  spawnInterval: 1
+  asteroidSpeed: 3
+  despawnHeight: -10
+  minAsteroidsPerLine: 0
+  maxAsteroidsPerLine: 3
+  minSpawnInterval: 1.5
+  maxSpawnInterval: 3
+  enableRotation: 1
+  minRotationSpeed: -100
+  maxRotationSpeed: 100
