@@ -1,12 +1,19 @@
 using UnityEngine;
+using System;
 
 public class AsteroidCollision : MonoBehaviour
 {
+    public static event Action<AsteroidCollision> OnAsteroidHit;
+
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
         {
-            Debug.Log($"Astéroïde '{name}' est entré en collision avec le joueur !");
+            Debug.Log($"AstÃ©roÃ¯de '{name}' has hit the Player");
+            if (OnAsteroidHit != null)
+            {
+                OnAsteroidHit(this);
+            }
         }
     }
 }
