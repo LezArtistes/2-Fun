@@ -1,5 +1,7 @@
 using UnityEngine;
 using System;
+using LitMotion;
+using LitMotion.Extensions;
 
 public class AsteroidCollision : MonoBehaviour
 {

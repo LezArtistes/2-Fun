@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class SpaceShipController : MonoBehaviour, ControllerAll
 {
@@ -32,8 +33,9 @@ public class SpaceShipController : MonoBehaviour, ControllerAll
     {
         Debug.Log("Player knows it has been hit by an asteroid");
         health--;
-        if (health < 0)
+        if (health <= 0)
         {
+            SceneManager.LoadScene("FinDePartie");
             health = 0;
         }
         if (OnLostHealth != null)

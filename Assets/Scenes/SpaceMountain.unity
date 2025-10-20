@@ -230,6 +230,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20e29e311118dd048a4d0b55a4848f94, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HealthManager
+  sprites:
+  - {fileID: 713987706382110613, guid: f3ef6b6488a06824bb1fe35e97b38b36, type: 3}
+  - {fileID: 3979293612948954234, guid: 1dd31281a8873324483f03f4619a58b6, type: 3}
+  - {fileID: -8394639024751417558, guid: dd6ad1a9953b4864aa8262225306b20b, type: 3}
+  - {fileID: -5640724112127150741, guid: 8a470e9209487bd4582daf0e6335687f, type: 3}
 --- !u!114 &177171724
 MonoBehaviour:
   m_ObjectHideFlags: 0
