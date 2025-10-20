@@ -4,13 +4,17 @@ using UnityEngine.InputSystem;
 
 public class InputManager : MonoBehaviour
 {
+    private ControllerAll playerController;
     public InputActionReference PlayerOnePress;
     public InputActionReference PlayerOneRelease;
 
     public InputActionReference PlayerTwoPress;
     public InputActionReference PlayerTwoRelease;
-    public ControllerAll playerController;
 
+    public void setController(ControllerAll controller)
+    {
+        playerController = controller;
+    }
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void OnEnable()
     {
@@ -30,18 +34,18 @@ public class InputManager : MonoBehaviour
     }
     private void CallPlayerOnePress(InputAction.CallbackContext obj)
     {
-        throw new System.NotImplementedException();
+        playerController.PlayerOnePress();
     }
     private void CallPlayerOneRelease(InputAction.CallbackContext obj)
     {
-        throw new System.NotImplementedException();
+        playerController.PlayerOneRelease();
     }
     private void CallPlayerTwoPress(InputAction.CallbackContext obj)
     {
-        throw new System.NotImplementedException();
+        playerController.PlayerTwoPress();
     }
     private void CallPlayerTwoRelease(InputAction.CallbackContext obj)
     {
-        throw new System.NotImplementedException();
+        playerController.PlayerTwoRelease();
     }
 }
