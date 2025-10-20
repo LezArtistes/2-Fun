@@ -1,44 +1,157 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
-public class SquareSwapController : MonoBehaviour, ControllerAll
+public class SwitchCharacter : MonoBehaviour
 {
     public GameObject square1;
     public GameObject square2;
+    public GameObject square3; 
 
-    private InputManager inputManager;
+    public float simultaneousThreshold = 0.2f;
 
-    private void Start()
+    private InputSystem_Actions inputActions;
+
+    private float lastPlayerOnePressTime = -1f;
+    private float lastPlayerTwoPressTime = -1f;
+
+    private bool playersHidden = false;
+    private bool playerOneHeld = false;
+    private bool playerTwoHeld = false;
+
+    private void Awake()
     {
-        // Cherche automatiquement l’InputManager dans la scène
-        inputManager = Object.FindFirstObjectByType<InputManager>();
-        if (inputManager == null)
+        inputActions = new InputSystem_Actions();
+        SetSquareVisible(square3, false);
+    }
+
+    private void OnEnable()
+    {
+        inputActions.Enable();
+
+        inputActions.Player.PlayerOnePress.performed += OnPlayerOnePress;
+        inputActions.Player.PlayerTwoPress.performed += OnPlayerTwoPress;
+
+        inputActions.Player.PlayerOneRelease.performed += OnPlayerOneRelease;
+        inputActions.Player.PlayerTwoRelease.performed += OnPlayerTwoRelease;
+    }
+
+    private void OnDisable()
+    {
+        inputActions.Player.PlayerOnePress.performed -= OnPlayerOnePress;
+        inputActions.Player.PlayerTwoPress.performed -= OnPlayerTwoPress;
+
+        inputActions.Player.PlayerOneRelease.performed -= OnPlayerOneRelease;
+        inputActions.Player.PlayerTwoRelease.performed -= OnPlayerTwoRelease;
+
+        inputActions.Disable();
+    }
+
+    private void OnPlayerOnePress(InputAction.CallbackContext context)
+    {
+        if (playersHidden) return;
+
+        playerOneHeld = true;
+        lastPlayerOnePressTime = Time.time;
+
+        if (playerTwoHeld && Mathf.Abs(lastPlayerOnePressTime - lastPlayerTwoPressTime) <= simultaneousThreshold)
         {
-            Debug.LogError("Aucun InputManager trouvé dans la scène !");
+            HandleSimultaneousPress();
             return;
         }
 
-        // On lie ce contrôleur à l'InputManager
-        inputManager.setController(this);
+        if (square1.transform.position.x < square2.transform.position.x)
+        {
+            SwapSquares();
+            Debug.Log("Player 1 (gauche) a échangé les positions !");
+        }
     }
 
-    public void PlayerOnePress()
+    private void OnPlayerTwoPress(InputAction.CallbackContext context)
     {
-        SwapSquares();
+        if (playersHidden) return;
+
+        playerTwoHeld = true;
+        lastPlayerTwoPressTime = Time.time;
+
+        if (playerOneHeld && Mathf.Abs(lastPlayerTwoPressTime - lastPlayerOnePressTime) <= simultaneousThreshold)
+        {
+            HandleSimultaneousPress();
+            return;
+        }
+
+        if (square2.transform.position.x < square1.transform.position.x)
+        {
+            SwapSquares();
+            Debug.Log("Player 2 (gauche) a échangé les positions !");
+        }
     }
 
-    public void PlayerOneRelease() { }
 
-    public void PlayerTwoPress()
+    private void OnPlayerOneRelease(InputAction.CallbackContext context)
     {
-        SwapSquares();
+        playerOneHeld = false;
+        TryRestoreSquares();
     }
 
-    public void PlayerTwoRelease() { }
+    private void OnPlayerTwoRelease(InputAction.CallbackContext context)
+    {
+        playerTwoHeld = false;
+        TryRestoreSquares();
+    }
 
     private void SwapSquares()
     {
-        Vector3 tempPos = square1.transform.position;
+        Vector3 temp = square1.transform.position;
         square1.transform.position = square2.transform.position;
-        square2.transform.position = tempPos;
+        square2.transform.position = temp;
+    }
+
+    private void HandleSimultaneousPress()
+    {
+        Debug.Log("Appui simultané détecté !");
+
+        GameObject rightmost = (square1.transform.position.x > square2.transform.position.x)
+            ? square1
+            : square2;
+
+        square3.transform.position = rightmost.transform.position;
+
+        SetSquareVisible(square1, false);
+        SetSquareVisible(square2, false);
+
+        SetSquareVisible(square3, true);
+
+        playersHidden = true;
+    }
+
+    private void TryRestoreSquares()
+    {
+        if (!playerOneHeld && !playerTwoHeld && playersHidden)
+        {
+            Debug.Log("Les deux joueurs ont relâché : restauration des carrés !");
+
+            SetSquareVisible(square3, false);
+
+            SetSquareVisible(square1, true);
+            SetSquareVisible(square2, true);
+
+            playersHidden = false;
+        }
+    }
+
+    private void SetSquareVisible(GameObject square, bool visible)
+    {
+        if (square == null) return;
+
+        var renderers = square.GetComponentsInChildren<Renderer>();
+        foreach (var r in renderers)
+            r.enabled = visible;
+
+        var colliders = square.GetComponentsInChildren<Collider2D>();
+        foreach (var c in colliders)
+            c.enabled = visible;
+
+        // Si tu veux aussi désactiver le GameObject entièrement :
+        // square.SetActive(visible);
     }
 }
