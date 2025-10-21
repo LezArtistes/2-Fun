@@ -118,6 +118,8 @@ public class AsteroidPoolManager : MonoBehaviour
                 }
 
                 asteroid.SetActive(true);
+                asteroid.GetComponent<Collider2D>().isTrigger = true;
+                asteroid.transform.localScale = Vector3.one;
                 activeAsteroids.Add(asteroid);
             }
         }
@@ -272,4 +274,24 @@ public class AsteroidPoolManager : MonoBehaviour
             new Vector3(leftBound + (columnCount - 0.5f) * columnWidth, despawnHeight, 0f)
         );
     }
+
+    // --- GETTERS / SETTERS pour le système de difficulté ---
+    public float AsteroidSpeed
+    {
+        get => asteroidSpeed;
+        set => asteroidSpeed = value;
+    }
+
+    public float MinSpawnInterval
+    {
+        get => minSpawnInterval;
+        set => minSpawnInterval = value;
+    }
+
+    public float MaxSpawnInterval
+    {
+        get => maxSpawnInterval;
+        set => maxSpawnInterval = value;
+    }
+
 }
