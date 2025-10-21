@@ -19,7 +19,7 @@ public class HealthManager : MonoBehaviour
 
     private void OnDisable()
     {
-        SpaceShipController.OnLostHealth += LostHealth;
+        SpaceShipController.OnLostHealth -= LostHealth;
     }
 
     private void LostHealth(SpaceShipController ship)
