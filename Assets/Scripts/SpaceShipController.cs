@@ -1,3 +1,5 @@
+using LitMotion;
+using LitMotion.Extensions;
 using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -10,6 +12,7 @@ public class SpaceShipController : MonoBehaviour, ControllerAll
     public InputManager inputManager;
     public float speedRotation;
     public float speedMove;
+    public GameObject VaisseauBody;
     public GameObject rightMotor;
     public GameObject leftMotor;
     public int health = 3;
@@ -31,17 +34,18 @@ public class SpaceShipController : MonoBehaviour, ControllerAll
 
     private void TakeDamage(AsteroidCollision asteroid) // Et ici on fait ce qu'on veut faire avec l'Asteroid touché
     {
-        Debug.Log("Player knows it has been hit by an asteroid");
+        GetComponent<AudioSource>().Play();
         health--;
         if (health <= 0)
         {
-            SceneManager.LoadScene("FinDePartie");
+            SceneManager.LoadSceneAsync("FinDePartie");
             health = 0;
         }
         if (OnLostHealth != null)
         {
             OnLostHealth(this);
         }
+        Debug.Log("Player knows it has been hit by an asteroid");
     }
 
     public void PlayerOnePress()

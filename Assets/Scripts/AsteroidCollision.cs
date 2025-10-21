@@ -11,11 +11,18 @@ public class AsteroidCollision : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            Debug.Log($"Astéroïde '{name}' has hit the Player");
+            GetComponent<Collider2D>().isTrigger = false;
+            LSequence.Create()
+                .Join(LMotion.Create(1f, .2f, .4f)
+                    .BindToLocalScaleY(transform))
+                .Append(LMotion.Create(1f, 0f, .4f)
+                    .BindToLocalScaleX(transform))
+                .Run();
             if (OnAsteroidHit != null)
             {
                 OnAsteroidHit(this);
             }
+            Debug.Log($"Astéroïde '{name}' has hit the Player");
         }
     }
 }
