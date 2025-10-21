@@ -4,6 +4,9 @@
 TagManager:
   serializedVersion: 3
   tags:
+  - PlayerFire
+  - PlayerIce
+  - PlayerGreen
   - IceWall
   - FireWall
   - GreenWall

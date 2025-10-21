@@ -1,2 +1,15 @@
 fileFormatVersion: 2
 guid: 8cb4fc817593cc842ba33aef2764a032
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - PlayerOnePress: {fileID: 4802467073112251775, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
+  - PlayerOneRelease: {fileID: 4802467073112251775, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
+  - PlayerTwoPress: {fileID: 7414571072742256922, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
+  - PlayerTwoRelease: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
