@@ -15,8 +15,8 @@ public class SpaceShipController : MonoBehaviour, ControllerAll
     public GameObject VaisseauBody;
     public GameObject rightMotor;
     public GameObject leftMotor;
+    
     public int health = 3;
-
     private void Start()
     {
         inputManager.setController(this);
