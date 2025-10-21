@@ -118,6 +118,8 @@ public class AsteroidPoolManager : MonoBehaviour
                 }
 
                 asteroid.SetActive(true);
+                asteroid.GetComponent<Collider2D>().isTrigger = true;
+                asteroid.transform.localScale = Vector3.one;
                 activeAsteroids.Add(asteroid);
             }
         }
