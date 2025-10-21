@@ -388,6 +388,10 @@ PrefabInstance:
       propertyPath: m_SortingOrder
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 1410480562309239676, guid: 302d78272d3c6d54f99a480d1c1c9de8, type: 3}
+      propertyPath: speedRotation
+      value: 250
+      objectReference: {fileID: 0}
     - target: {fileID: 3575269484652811511, guid: 302d78272d3c6d54f99a480d1c1c9de8, type: 3}
       propertyPath: m_SortingOrder
       value: 10
