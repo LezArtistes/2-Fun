@@ -1,8 +1,18 @@
+using LitMotion;
+using LitMotion.Extensions;
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class SwitchCharacter : MonoBehaviour
 {
+    public static event Action<SwitchCharacter> RipBozo;
+
+    public int startingHealth = 3;
+    public int health;
+
     public GameObject square1;
     public GameObject square2;
     public GameObject square3; 
@@ -17,6 +27,11 @@ public class SwitchCharacter : MonoBehaviour
     private bool playersHidden = false;
     private bool playerOneHeld = false;
     private bool playerTwoHeld = false;
+
+    private void Start()
+    {
+        health = startingHealth;
+    }
 
     private void Awake()
     {
@@ -33,6 +48,7 @@ public class SwitchCharacter : MonoBehaviour
 
         inputActions.Player.PlayerOneRelease.performed += OnPlayerOneRelease;
         inputActions.Player.PlayerTwoRelease.performed += OnPlayerTwoRelease;
+        HitWall.WallHit += LostHealth;
     }
 
     private void OnDisable()
@@ -44,6 +60,22 @@ public class SwitchCharacter : MonoBehaviour
         inputActions.Player.PlayerTwoRelease.performed -= OnPlayerTwoRelease;
 
         inputActions.Disable();
+        HitWall.WallHit -= LostHealth;
+    }
+
+    private void LostHealth(HitWall hit)
+    {
+        health--;
+        if (health <= 0)
+        {
+            StaticInfo.pathToBackground = "Assets/Pictures/background_blur.png";
+            SceneManager.LoadSceneAsync("FinDePartie");
+            health = 0;
+        }
+        if (RipBozo != null)
+        {
+            RipBozo(this);
+        }
     }
 
     private void OnPlayerOnePress(InputAction.CallbackContext context)

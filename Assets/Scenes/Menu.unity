@@ -326,9 +326,10 @@ MonoBehaviour:
   - LoveElements
   scenesDesJeux:
   - SpaceMountain
-  - LoveElements
+  - BackgroundIceAndFire
   imagesDesJeux:
   - {fileID: 4575000393699231159, guid: 0a5224eaf31a6b3428b8296eb9fdfa41, type: 3}
+  - {fileID: -2449356783416655692, guid: 4cbdcc4d6cbb9924987ac56942f55b29, type: 3}
   inputActions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   nomActionMapUI: UI
   nomActionBouton: Submit

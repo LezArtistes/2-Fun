@@ -1,8 +1,11 @@
-using UnityEditor.UIElements;
+using System;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class HitWall : MonoBehaviour
 {
+    public static event Action<HitWall> WallHit;
+
     private void OnTriggerEnter2D(Collider2D other)
     {
         string wallTag = other.tag;
@@ -18,6 +21,10 @@ public class HitWall : MonoBehaviour
             }
             else
             {
+                if (WallHit != null)
+                {
+                    WallHit(this);
+                }
                 Debug.Log($"Vous avez perdu une vie !"); 
                 Destroy(other.gameObject); // on détruit le mur correspondant
 
