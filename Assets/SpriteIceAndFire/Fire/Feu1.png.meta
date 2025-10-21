@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: c5bb210c69a553f4abd710ebf69959ab
+guid: 7ab53a7b4ed319e4b9f2e0e4c6afe4c8
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 2606649501201955311
-    second: mix5_0
+      213: 446868207623582144
+    second: Feu1_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -109,17 +109,43 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WindowsStoreApps
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: mix5_0
+      name: Feu1_0
       rect:
         serializedVersion: 2
-        x: 106
+        x: 14
         y: 0
-        width: 680
-        height: 1172
+        width: 279
+        height: 488
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +154,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: fe9771529edac2420800000000000000
-      internalID: 2606649501201955311
+      spriteID: 0c1b1d86448933600800000000000000
+      internalID: 446868207623582144
       vertices: []
       indices: 
       edges: []
@@ -148,7 +174,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      mix5_0: 2606649501201955311
+      Feu1_0: 446868207623582144
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 49e2a6dac95c47d45b27738c81bbbb2f
+guid: e825434260775644abd7b9b889cbb0b4
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 6792771669988752246
-    second: Feu3_0
+      213: 2459843286323911568
+    second: mix1_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -109,17 +109,43 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WindowsStoreApps
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Feu3_0
+      name: mix1_0
       rect:
         serializedVersion: 2
-        x: 7
+        x: 217
         y: 0
-        width: 291
-        height: 488
+        width: 603
+        height: 1194
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +154,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 67b340e18d5c44e50800000000000000
-      internalID: 6792771669988752246
+      spriteID: 09b5774af6e132220800000000000000
+      internalID: 2459843286323911568
       vertices: []
       indices: 
       edges: []
@@ -148,7 +174,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Feu3_0: 6792771669988752246
+      mix1_0: 2459843286323911568
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

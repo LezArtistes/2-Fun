@@ -1,14 +1,8 @@
+using UnityEditor.UIElements;
 using UnityEngine;
 
 public class HitWall : MonoBehaviour
 {
-
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        Debug.Log($"Collision détectée avec {collision.gameObject.name}");
-    }
-
-
     private void OnTriggerEnter2D(Collider2D other)
     {
         string wallTag = other.tag;
@@ -24,7 +18,9 @@ public class HitWall : MonoBehaviour
             }
             else
             {
-                Debug.Log($"Vous avez perdu une vie !");
+                Debug.Log($"Vous avez perdu une vie !"); 
+                Destroy(other.gameObject); // on détruit le mur correspondant
+
             }
         }
     }
