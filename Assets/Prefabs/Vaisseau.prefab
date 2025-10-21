@@ -572,6 +572,7 @@ MonoBehaviour:
   VaisseauBody: {fileID: 5786904453696867702}
   rightMotor: {fileID: 3344052577770539450}
   leftMotor: {fileID: 5460747382181611605}
+  startingHealth: 3
   health: 3
 --- !u!50 &3726065933819861791
 Rigidbody2D:

@@ -15,10 +15,15 @@ public class SpaceShipController : MonoBehaviour, ControllerAll
     public GameObject VaisseauBody;
     public GameObject rightMotor;
     public GameObject leftMotor;
-    
+    public int startingHealth;
     public int health = 3;
+
     private void Start()
     {
+        speedFactor = 0;
+        speedRotation = 100;
+        speedMove = 10;
+        health = startingHealth;
         inputManager.setController(this);
     }
 
@@ -38,6 +43,7 @@ public class SpaceShipController : MonoBehaviour, ControllerAll
         health--;
         if (health <= 0)
         {
+            StaticInfo.pathToBackground = "Assets/Pictures/background_blur.png";
             SceneManager.LoadSceneAsync("FinDePartie");
             health = 0;
         }
@@ -65,7 +71,7 @@ public class SpaceShipController : MonoBehaviour, ControllerAll
         rightMotor.SetActive(false);
     }
 
-    private void Update()
+    void Update()
     {
         float rotationSens = 0;
         if (rightMotor.activeSelf)
@@ -83,5 +89,10 @@ public class SpaceShipController : MonoBehaviour, ControllerAll
         float puissance =  1 - Mathf.Abs(Mathf.Abs(rotation) - 90) / 90;
         Vector3 translation = new Vector3(direction * puissance, 0, 0);
         transform.position += translation * Time.deltaTime * speedMove;
+
+        // Clamp la position pour pas dépasser
+        float newX = Mathf.Clamp(transform.position.x, -7.5f, 7.5f);
+        Debug.Log($"Voici le new X : {newX}");
+        transform.position = new Vector3(newX, transform.position.y, transform.position.z);
     }
 }
