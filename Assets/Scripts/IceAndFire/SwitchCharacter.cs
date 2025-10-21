@@ -129,9 +129,8 @@ public class SwitchCharacter : MonoBehaviour
         if (!playerOneHeld && !playerTwoHeld && playersHidden)
         {
             Debug.Log("Les deux joueurs ont relâché : restauration des carrés !");
-
+            
             SetSquareVisible(square3, false);
-
             SetSquareVisible(square1, true);
             SetSquareVisible(square2, true);
 
@@ -150,8 +149,5 @@ public class SwitchCharacter : MonoBehaviour
         var colliders = square.GetComponentsInChildren<Collider2D>();
         foreach (var c in colliders)
             c.enabled = visible;
-
-        // Si tu veux aussi désactiver le GameObject entièrement :
-        // square.SetActive(visible);
     }
 }
