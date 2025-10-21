@@ -10,7 +10,7 @@ public class SpaceShipController : MonoBehaviour, ControllerAll
     public float speedMove;
     public GameObject rightMotor;
     public GameObject leftMotor;
-
+    
     private void Start()
     {
         inputManager.setController(this);
