@@ -11,10 +11,10 @@ public class ObstacleGeneration : MonoBehaviour
     private List<int> vraipoidsObs = new List<int>();
     public GameObject instancePosition;
     public float ecartObs;
-    public bool test = true;
-
     private Vector3 lastPosition = Vector3.zero;
     private List<GameObject> obstaclesActif = new List<GameObject>();
+    public float difficultyIncreaseTimeInterval;
+    private float timeLastDifficultyIncrease;
 
     private void Start()
     {
@@ -22,6 +22,9 @@ public class ObstacleGeneration : MonoBehaviour
         {
             vraipoidsObs.Add(poidsObs[i]);
         }
+
+        // Init the fist timestamp for the difficulty increase
+        timeLastDifficultyIncrease = Time.time;
     }
     private void Update()
     {
@@ -32,6 +35,13 @@ public class ObstacleGeneration : MonoBehaviour
             lastPosition = instancePosition.transform.position;
         }
         instancePosition.transform.Translate(Vector3.right * Time.deltaTime * speed);
+
+        // Update speed every difficultyIncreaseTimeInterval seconds
+        if (Time.time - timeLastDifficultyIncrease >= difficultyIncreaseTimeInterval)
+        {
+            speed += .5f;
+            timeLastDifficultyIncrease = Time.time;
+        }
     }
     private void genere()
     {
@@ -49,8 +59,11 @@ public class ObstacleGeneration : MonoBehaviour
             }
         }
 
+        // Génération d'un nouveau mur  
         obstaclesActif.Add(Instantiate(obsAlea));
-        obstaclesActif.Last().transform.position = instancePosition.transform.position;
+        Vector3 newPosition = instancePosition.transform.position;
+        newPosition.x = newPosition.x + 10; // Mur placé au bout de l'écran
+        obstaclesActif.Last().transform.position = newPosition;
     }
 
     private void UpdatePoids(int ind)

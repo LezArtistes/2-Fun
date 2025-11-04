@@ -43,7 +43,7 @@ public class SpaceShipController : MonoBehaviour, ControllerAll
         health--;
         if (health <= 0)
         {
-            StaticInfo.pathToBackground = "Assets/Pictures/background_blur.png";
+            StaticInfo.pathToBackground = "SpaceMountain/background_blur";
             SceneManager.LoadSceneAsync("FinDePartie");
             health = 0;
         }

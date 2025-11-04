@@ -68,7 +68,7 @@ public class SwitchCharacter : MonoBehaviour
         health--;
         if (health <= 0)
         {
-            StaticInfo.pathToBackground = "Assets/Pictures/background_blur.png";
+            StaticInfo.pathToBackground = "SpriteIceAndFire/background_icenfire";
             SceneManager.LoadSceneAsync("FinDePartie");
             health = 0;
         }
@@ -158,9 +158,9 @@ public class SwitchCharacter : MonoBehaviour
 
     private void TryRestoreSquares()
     {
-        if (!playerOneHeld && !playerTwoHeld && playersHidden)
+        if ((!playerOneHeld || !playerTwoHeld) && playersHidden)
         {
-            Debug.Log("Les deux joueurs ont relâché : restauration des carrés !");
+            Debug.Log("L'un des deux joueurs a relaché : restauration des carrés !");
             
             SetSquareVisible(square3, false);
             SetSquareVisible(square1, true);

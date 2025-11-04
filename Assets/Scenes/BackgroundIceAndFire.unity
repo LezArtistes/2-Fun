@@ -131,13 +131,17 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1965043676823499137, guid: 796183c36d1e23c4fb3c42d01cd3655e, type: 3}
+      propertyPath: health
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 3147354865824184158, guid: 796183c36d1e23c4fb3c42d01cd3655e, type: 3}
       propertyPath: m_LocalPosition.y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5216174249006865485, guid: 796183c36d1e23c4fb3c42d01cd3655e, type: 3}
       propertyPath: m_Name
-      value: GameObject
+      value: Elements
       objectReference: {fileID: 0}
     - target: {fileID: 5747580181453961688, guid: 796183c36d1e23c4fb3c42d01cd3655e, type: 3}
       propertyPath: health
@@ -433,7 +437,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BackgroundIceAndFire
   cameraTransform: {fileID: 2102807352}
-  imageWidth: 18
+  imageWidth: 19.2
 --- !u!4 &582777594
 Transform:
   m_ObjectHideFlags: 0
@@ -597,9 +601,21 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4701973528670738995, guid: 63416cd0ea382bd4d9e8e2ee998c8b74, type: 3}
+      propertyPath: speed
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4701973528670738995, guid: 63416cd0ea382bd4d9e8e2ee998c8b74, type: 3}
+      propertyPath: ecartObs
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4701973528670738995, guid: 63416cd0ea382bd4d9e8e2ee998c8b74, type: 3}
       propertyPath: instancePosition
       value: 
       objectReference: {fileID: 478187976}
+    - target: {fileID: 4701973528670738995, guid: 63416cd0ea382bd4d9e8e2ee998c8b74, type: 3}
+      propertyPath: difficultyIncreaseTimeInterval
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
