@@ -322,11 +322,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::OneButtonMenu
   nomDesJeux:
-  - SpaceMountains
-  - LoveElements
+  - Space Mountains
+  - Love Elements
   scenesDesJeux:
   - SpaceMountain
-  - BackgroundIceAndFire
+  - LoveElements
   imagesDesJeux:
   - {fileID: 4575000393699231159, guid: 0a5224eaf31a6b3428b8296eb9fdfa41, type: 3}
   - {fileID: -2449356783416655692, guid: 4cbdcc4d6cbb9924987ac56942f55b29, type: 3}
@@ -342,11 +342,12 @@ MonoBehaviour:
   barreProgression: {fileID: 757548595}
   texteInstruction: {fileID: 420793070}
   tempsPourValider: 1.5
-  tempsEntreChangements: 0.5
-  couleurNormale: {r: 1, g: 1, b: 1, a: 1}
-  couleurSelection: {r: 0.7516198, g: 0.8113208, b: 0.7516198, a: 0.7882353}
+  tempsEntreChangements: 0
+  couleurNormale: {r: 0.554717, g: 0.554717, b: 0.554717, a: 1}
+  couleurSelection: {r: 0.645283, g: 0.645283, b: 0.645283, a: 0.6509804}
+  couleurBarrePleine: {r: 0, g: 0.6830188, b: 0, a: 1}
   echelleNormale: 1
-  echelleSelection: 1.1
+  echelleSelection: 1.08
 --- !u!4 &424640308
 Transform:
   m_ObjectHideFlags: 0
@@ -664,6 +665,7 @@ GameObject:
   - component: {fileID: 1217512107}
   - component: {fileID: 1217512106}
   - component: {fileID: 1217512109}
+  - component: {fileID: 1217512110}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -688,8 +690,8 @@ Camera:
   m_GameObject: {fileID: 1217512105}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_ClearFlags: 2
+  m_BackGroundColor: {r: 0.12116339, g: 0.403, b: 0, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -789,6 +791,18 @@ MonoBehaviour:
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
   m_Version: 2
+--- !u!114 &1217512110
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1217512105}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44c948e74914786479ee1bd4aca5d077, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
 --- !u!1 &1289100961
 GameObject:
   m_ObjectHideFlags: 0

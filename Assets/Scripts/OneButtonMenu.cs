@@ -33,6 +33,7 @@ public class OneButtonMenu : MonoBehaviour
     [SerializeField] private float tempsEntreChangements = 0.5f;
     [SerializeField] private Color couleurNormale = Color.white;
     [SerializeField] private Color couleurSelection = Color.yellow;
+    [SerializeField] private Color couleurBarrePleine = Color.green;
     [SerializeField] private float echelleNormale = 1f;
     [SerializeField] private float echelleSelection = 1.1f;
 
@@ -110,7 +111,7 @@ public class OneButtonMenu : MonoBehaviour
             if (barreProgression != null)
             {
                 barreProgression.fillAmount = tempsAppui / tempsPourValider;
-                barreProgression.color = Color.Lerp(couleurNormale, couleurSelection,
+                barreProgression.color = Color.Lerp(couleurNormale, couleurBarrePleine,
                     tempsAppui / tempsPourValider);
             }
 
