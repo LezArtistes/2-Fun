@@ -1,5 +1,3 @@
-using LitMotion;
-using LitMotion.Extensions;
 using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -7,6 +5,7 @@ using UnityEngine.SceneManagement;
 public class SpaceShipController : MonoBehaviour, ControllerAll
 {
     public static event Action<SpaceShipController> OnLostHealth;
+    public static event Action<SpaceShipController> EndGame;
     
     public float speedFactor;
     public InputManager inputManager;
@@ -43,9 +42,13 @@ public class SpaceShipController : MonoBehaviour, ControllerAll
         health--;
         if (health <= 0)
         {
-            StaticInfo.pathToBackground = "SpaceMountain/background_blur";
-            SceneManager.LoadSceneAsync("FinDePartie");
             health = 0;
+            if (EndGame != null)
+            {
+                EndGame(this);
+            }
+            StaticInfo.lastGamePlayed = (int)StaticInfo.Games.SPACESHIP;
+            SceneManager.LoadSceneAsync("FinDePartie");
         }
         if (OnLostHealth != null)
         {

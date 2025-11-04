@@ -9,6 +9,7 @@ using UnityEngine.UI;
 public class SwitchCharacter : MonoBehaviour
 {
     public static event Action<SwitchCharacter> RipBozo;
+    public static event Action<SwitchCharacter> EndGame;
 
     public int startingHealth = 3;
     public int health;
@@ -17,7 +18,7 @@ public class SwitchCharacter : MonoBehaviour
     public GameObject square2;
     public GameObject square3; 
 
-    public float simultaneousThreshold = 0.2f;
+    public float simultaneousThreshold = 0.17f;
 
     private InputSystem_Actions inputActions;
 
@@ -68,9 +69,13 @@ public class SwitchCharacter : MonoBehaviour
         health--;
         if (health <= 0)
         {
-            StaticInfo.pathToBackground = "SpriteIceAndFire/background_icenfire";
-            SceneManager.LoadSceneAsync("FinDePartie");
             health = 0;
+            if (EndGame != null)
+            {
+                EndGame(this);
+            }
+            StaticInfo.lastGamePlayed = (int)StaticInfo.Games.ELEMENTS;
+            SceneManager.LoadSceneAsync("FinDePartie");
         }
         if (RipBozo != null)
         {
