@@ -7,21 +7,20 @@ public class SpaceShipController : MonoBehaviour, ControllerAll
     public static event Action<SpaceShipController> OnLostHealth;
     public static event Action<SpaceShipController> EndGame;
     
-    public float speedFactor;
     public InputManager inputManager;
     public float speedRotation;
     public float speedMove;
+    public float speedWhenFastAF;
     public GameObject VaisseauBody;
     public GameObject rightMotor;
     public GameObject leftMotor;
     public int startingHealth;
     public int health = 3;
 
+    private float speed;
+
     private void Start()
     {
-        speedFactor = 0;
-        speedRotation = 100;
-        speedMove = 10;
         health = startingHealth;
         inputManager.setController(this);
     }
@@ -85,13 +84,20 @@ public class SpaceShipController : MonoBehaviour, ControllerAll
         {
             rotationSens -= 1;
         }
-        transform.Rotate(0, 0, rotationSens * Time.deltaTime * speedRotation);
+        if (rightMotor.activeSelf && leftMotor.activeSelf)
+        {
+            speed = speedWhenFastAF;
+        } else
+        {
+            speed = speedMove;
+        }
+            transform.Rotate(0, 0, rotationSens * Time.deltaTime * speedRotation);
 
         float rotation = transform.localEulerAngles.z - 180;
         float direction = Mathf.Sign(rotation);
         float puissance =  1 - Mathf.Abs(Mathf.Abs(rotation) - 90) / 90;
         Vector3 translation = new Vector3(direction * puissance, 0, 0);
-        transform.position += translation * Time.deltaTime * speedMove;
+        transform.position += translation * Time.deltaTime * speed;
 
         // Clamp la position pour pas dépasser
         float newX = Mathf.Clamp(transform.position.x, -7.5f, 7.5f);

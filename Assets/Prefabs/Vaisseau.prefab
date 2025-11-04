@@ -452,7 +452,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 991886910742367646}
   - {fileID: 977943303881754345}
@@ -546,8 +546,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 7598725274753278583}
   - {fileID: 4073530713274557244}
@@ -565,10 +565,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f6384e1caafaf94a9aee12bea581b4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  speedFactor: 0
   inputManager: {fileID: 6881409621944457234}
-  speedRotation: 100
+  speedRotation: 200
   speedMove: 10
+  speedWhenFastAF: 20
   VaisseauBody: {fileID: 5786904453696867702}
   rightMotor: {fileID: 3344052577770539450}
   leftMotor: {fileID: 5460747382181611605}
@@ -635,7 +635,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0.027372122, y: 0.41555887}
+  m_Offset: {x: 0, y: 0.59}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -645,7 +645,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 2.806561, y: 1.1940933}
+  m_Size: {x: 2.17, y: 1.18}
   m_EdgeRadius: 0
 --- !u!82 &255501155519601687
 AudioSource:

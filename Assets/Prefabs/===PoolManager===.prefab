@@ -57,15 +57,15 @@ MonoBehaviour:
   largeAsteroidWeight: 10
   poolSize: 30
   columnCount: 6
-  columnWidth: 2.81
+  columnWidth: 2.65
   spawnHeight: 10
-  spawnInterval: 1
-  asteroidSpeed: 3
+  spawnInterval: 1.25
+  asteroidSpeed: 2
   despawnHeight: -10
-  minAsteroidsPerLine: 0
-  maxAsteroidsPerLine: 3
-  minSpawnInterval: 1.5
-  maxSpawnInterval: 3
+  minAsteroidsPerLine: 1
+  maxAsteroidsPerLine: 4
+  minSpawnInterval: 2
+  maxSpawnInterval: 2.5
   enableRotation: 1
   minRotationSpeed: -100
   maxRotationSpeed: 100

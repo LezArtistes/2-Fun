@@ -616,6 +616,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 569936341640300054, guid: 302d78272d3c6d54f99a480d1c1c9de8, type: 3}
+      propertyPath: m_Size.x
+      value: 2.17
+      objectReference: {fileID: 0}
+    - target: {fileID: 569936341640300054, guid: 302d78272d3c6d54f99a480d1c1c9de8, type: 3}
+      propertyPath: m_Size.y
+      value: 1.18
+      objectReference: {fileID: 0}
+    - target: {fileID: 569936341640300054, guid: 302d78272d3c6d54f99a480d1c1c9de8, type: 3}
+      propertyPath: m_Offset.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 569936341640300054, guid: 302d78272d3c6d54f99a480d1c1c9de8, type: 3}
+      propertyPath: m_Offset.y
+      value: 0.59
+      objectReference: {fileID: 0}
     - target: {fileID: 8397496150665666262, guid: 302d78272d3c6d54f99a480d1c1c9de8, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -1081,6 +1097,18 @@ PrefabInstance:
       propertyPath: asteroidPoolManager
       value: 
       objectReference: {fileID: 2069429896}
+    - target: {fileID: 7371634850453232069, guid: 9079bd88a753f7e44afaca8035aa40d7, type: 3}
+      propertyPath: maxSpawnIntervalLimit
+      value: 1.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7371634850453232069, guid: 9079bd88a753f7e44afaca8035aa40d7, type: 3}
+      propertyPath: minSpawnIntervalLimit
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7371634850453232069, guid: 9079bd88a753f7e44afaca8035aa40d7, type: 3}
+      propertyPath: difficultyIncreaseInterval
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

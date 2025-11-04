@@ -45,9 +45,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DifficultyManager
   asteroidPoolManager: {fileID: 0}
-  difficultyIncreaseInterval: 10
+  difficultyIncreaseInterval: 4
   asteroidSpeedIncrease: 0.5
   minSpawnIntervalDecrease: 0.1
   maxSpawnIntervalDecrease: 0.1
   minSpawnIntervalLimit: 0.5
-  maxSpawnIntervalLimit: 1
+  maxSpawnIntervalLimit: 1.2

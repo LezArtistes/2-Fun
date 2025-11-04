@@ -130,7 +130,7 @@ public class AsteroidPoolManager : MonoBehaviour
         GameObject obj = new GameObject("Asteroid");
         obj.AddComponent<SpriteRenderer>();
 
-        // Ajoute un collider circulaire (tu peux mettre BoxCollider2D si tu préfères)
+        // Ajoute un collider circulaire
         CircleCollider2D collider = obj.AddComponent<CircleCollider2D>();
         collider.isTrigger = true; // On le met en trigger pour OnTriggerEnter2D
 
@@ -154,15 +154,17 @@ public class AsteroidPoolManager : MonoBehaviour
             obj = CreateAsteroidObject(); // On utilise la même fonction
         }
 
-        AssignRandomSprite(obj);
+        SetSpecificsOnAsteroidSize(obj);
         return obj;
     }
 
-    // Version mise à jour : taille appliquée selon le type d’astéroïde
-    void AssignRandomSprite(GameObject asteroid)
+    void SetSpecificsOnAsteroidSize(GameObject asteroid)
     {
         SpriteRenderer spriteRenderer = asteroid.GetComponent<SpriteRenderer>();
         if (spriteRenderer == null) return;
+
+        CircleCollider2D circleCollider = asteroid.GetComponent<CircleCollider2D>();
+        if (circleCollider == null) return;
 
         float totalWeight = smallAsteroidWeight + mediumAsteroidWeight + largeAsteroidWeight;
         float randomValue = Random.Range(0f, totalWeight);
@@ -173,16 +175,19 @@ public class AsteroidPoolManager : MonoBehaviour
         {
             spriteRenderer.sprite = smallAsteroidSprite;
             baseScale = smallAsteroidScale;
+            circleCollider.radius = 0.5f;
         }
         else if (randomValue < smallAsteroidWeight + mediumAsteroidWeight)
         {
             spriteRenderer.sprite = mediumAsteroidSprite;
             baseScale = mediumAsteroidScale;
+            circleCollider.radius = 1f;
         }
         else
         {
             spriteRenderer.sprite = largeAsteroidSprite;
             baseScale = largeAsteroidScale;
+            circleCollider.radius = 1.5f;
         }
 
         // Ajout : variation aléatoire de la taille (optionnelle)
