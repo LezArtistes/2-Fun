@@ -2,9 +2,9 @@ using LitMotion;
 using LitMotion.Extensions;
 using System;
 using UnityEngine;
+using UnityEngine.Audio;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 
 public class SwitchCharacter : MonoBehaviour
 {

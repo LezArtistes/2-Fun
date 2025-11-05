@@ -1,5 +1,6 @@
 using UnityEngine;
 using System;
+using System.Collections.Generic;
 using LitMotion;
 using LitMotion.Extensions;
 
@@ -17,7 +18,8 @@ public class AsteroidCollision : MonoBehaviour
                     .BindToLocalScaleY(transform))
                 .Append(LMotion.Create(1f, 0f, .4f)
                     .BindToLocalScaleX(transform))
-                .Run();
+                .Run()
+                .AddTo(gameObject);
             if (OnAsteroidHit != null)
             {
                 OnAsteroidHit(this);

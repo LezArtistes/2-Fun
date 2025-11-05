@@ -1,10 +1,16 @@
 using System;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class HitWall : MonoBehaviour
 {
     public static event Action<HitWall> WallHit;
+
+    private AudioSource sfxMaker;
+
+    private void Start()
+    {
+        sfxMaker = GetComponent<AudioSource>();
+    }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -16,8 +22,9 @@ public class HitWall : MonoBehaviour
         {
             if (IsMatchingWall(playerTag, wallTag))
             {
+                sfxMaker.Play();
                 Debug.Log($"{playerTag} a détruit {wallTag} !");
-                Destroy(other.gameObject); // on détruit le mur correspondant
+                other.gameObject.GetComponent<Wall>().DestroyItself(true);  // on détruit le mur correspondant
             }
             else
             {
@@ -25,9 +32,8 @@ public class HitWall : MonoBehaviour
                 {
                     WallHit(this);
                 }
-                Debug.Log($"Vous avez perdu une vie !"); 
-                Destroy(other.gameObject); // on détruit le mur correspondant
-
+                Debug.Log($"Vous avez perdu une vie !");
+                other.gameObject.GetComponent<Wall>().DestroyItself(false); // on détruit le mur correspondant
             }
         }
     }

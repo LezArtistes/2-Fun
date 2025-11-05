@@ -63,6 +63,7 @@ public class ObstacleGeneration : MonoBehaviour
         obstaclesActif.Add(Instantiate(obsAlea));
         Vector3 newPosition = instancePosition.transform.position;
         newPosition.x = newPosition.x + 10; // Mur placé au bout de l'écran
+        newPosition.y = -1.25f; // Mur placé à la bonne hauteur
         obstaclesActif.Last().transform.position = newPosition;
     }
 
