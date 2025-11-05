@@ -2,7 +2,6 @@ using LitMotion;
 using LitMotion.Extensions;
 using System;
 using UnityEngine;
-using UnityEngine.Audio;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
@@ -29,9 +28,14 @@ public class SwitchCharacter : MonoBehaviour
     private bool playerOneHeld = false;
     private bool playerTwoHeld = false;
 
+    private bool detranformed = false;
+
+    private AudioSource playerAudio;
+
     private void Start()
     {
         health = startingHealth;
+        playerAudio = GetComponent<AudioSource>();
     }
 
     private void Awake()
@@ -101,6 +105,12 @@ public class SwitchCharacter : MonoBehaviour
             SwapSquares();
             Debug.Log("Player 1 (gauche) a échangé les positions !");
         }
+
+        if (detranformed)
+        {
+            playerAudio.Play();
+            detranformed = false;
+        }
     }
 
     private void OnPlayerTwoPress(InputAction.CallbackContext context)
@@ -121,6 +131,12 @@ public class SwitchCharacter : MonoBehaviour
             SwapSquares();
             Debug.Log("Player 2 (gauche) a échangé les positions !");
         }
+
+        if (detranformed)
+        {
+            playerAudio.Play();
+            detranformed = false;
+        }
     }
 
 
@@ -138,6 +154,7 @@ public class SwitchCharacter : MonoBehaviour
 
     private void SwapSquares()
     {
+        playerAudio.Play();
         Vector3 temp = square1.transform.position;
         square1.transform.position = square2.transform.position;
         square2.transform.position = temp;
@@ -146,6 +163,7 @@ public class SwitchCharacter : MonoBehaviour
     private void HandleSimultaneousPress()
     {
         Debug.Log("Appui simultané détecté !");
+        playerAudio.Play();
 
         GameObject rightmost = (square1.transform.position.x > square2.transform.position.x)
             ? square1
@@ -166,13 +184,14 @@ public class SwitchCharacter : MonoBehaviour
         if ((!playerOneHeld || !playerTwoHeld) && playersHidden)
         {
             Debug.Log("L'un des deux joueurs a relaché : restauration des carrés !");
-            
+
             SetSquareVisible(square3, false);
             SetSquareVisible(square1, true);
             SetSquareVisible(square2, true);
 
             playersHidden = false;
 
+            detranformed = true;
             if (fireForward) OnPlayerOnePress(new InputAction.CallbackContext());
             else OnPlayerTwoPress(new InputAction.CallbackContext());
         }

@@ -23,8 +23,8 @@ public class HitWall : MonoBehaviour
             if (IsMatchingWall(playerTag, wallTag))
             {
                 sfxMaker.Play();
-                Debug.Log($"{playerTag} a détruit {wallTag} !");
-                other.gameObject.GetComponent<Wall>().DestroyItself(true);  // on détruit le mur correspondant
+                Debug.Log($"{playerTag} a dï¿½truit {wallTag} !");
+                _ = other.gameObject.GetComponent<Wall>().DestroyItself(true);  // on dï¿½truit le mur correspondant
             }
             else
             {
@@ -33,12 +33,12 @@ public class HitWall : MonoBehaviour
                     WallHit(this);
                 }
                 Debug.Log($"Vous avez perdu une vie !");
-                other.gameObject.GetComponent<Wall>().DestroyItself(false); // on détruit le mur correspondant
+                _ = other.gameObject.GetComponent<Wall>().DestroyItself(false); // on dï¿½truit le mur correspondant
             }
         }
     }
 
-    // Vérifie si le joueur correspond au mur
+    // Vï¿½rifie si le joueur correspond au mur
     private bool IsMatchingWall(string playerTag, string wallTag)
     {
         return (playerTag == "PlayerFire" && wallTag == "FireWall") ||
@@ -46,7 +46,7 @@ public class HitWall : MonoBehaviour
                (playerTag == "PlayerGreen" && wallTag == "GreenWall");
     }
 
-    // Vérifie si l’objet touché est un mur
+    // Vï¿½rifie si lï¿½objet touchï¿½ est un mur
     private bool IsWallTag(string wallTag)
     {
         return wallTag == "FireWall" || wallTag == "IceWall" || wallTag == "GreenWall";

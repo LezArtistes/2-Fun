@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 4cbdcc4d6cbb9924987ac56942f55b29
+guid: 43feb5a98cec3cd458592b678d7f00eb
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 5428030846091490318
-    second: ScreenFireAndIce_0
+      213: 9018692839554030837
+    second: 2FunLogo_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -96,30 +96,17 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
-    buildTarget: WebGL
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: ScreenFireAndIce_0
+      name: 2FunLogo_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 0
-        width: 1576
-        height: 881
+        y: 14
+        width: 370
+        height: 352
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: e04752bab4d345b40800000000000000
-      internalID: 5428030846091490318
+      spriteID: 5fc1affba55d82d70800000000000000
+      internalID: 9018692839554030837
       vertices: []
       indices: 
       edges: []
@@ -148,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      ScreenFireAndIce_0: 5428030846091490318
+      2FunLogo_0: 9018692839554030837
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

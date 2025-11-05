@@ -91,7 +91,7 @@ public class SpaceShipController : MonoBehaviour, ControllerAll
         {
             speed = speedMove;
         }
-            transform.Rotate(0, 0, rotationSens * Time.deltaTime * speedRotation);
+        transform.Rotate(0, 0, rotationSens * Time.deltaTime * speedRotation);
 
         float rotation = transform.localEulerAngles.z - 180;
         float direction = Mathf.Sign(rotation);

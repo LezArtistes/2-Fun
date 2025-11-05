@@ -3,6 +3,8 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using UnityEngine.InputSystem;
 using TMPro;
+using LitMotion;
+using LitMotion.Extensions;
 
 public class OneButtonMenu : MonoBehaviour
 {
@@ -13,6 +15,8 @@ public class OneButtonMenu : MonoBehaviour
     [SerializeField] private InputActionAsset inputActions;
     [SerializeField] private string nomActionMapUI = "UI";
     [SerializeField] private string nomActionBouton = "Submit";
+    [SerializeField] private GameObject sfxMakerSwitchSound;
+    [SerializeField] private GameObject sfxMakerProgressBar;
 
     [Header("UI - Jeu 1")]
     [SerializeField] private TextMeshProUGUI texteJeu1;
@@ -28,11 +32,12 @@ public class OneButtonMenu : MonoBehaviour
     [SerializeField] private Image barreProgression;
     [SerializeField] private TextMeshProUGUI texteInstruction;
 
-    [Header("Paramètres")]
+    [Header("Paramï¿½tres")]
     [SerializeField] private float tempsPourValider = 1.5f;
     [SerializeField] private float tempsEntreChangements = 0.5f;
-    [SerializeField] private Color couleurNormale = Color.white;
-    [SerializeField] private Color couleurSelection = Color.yellow;
+    [SerializeField] private Color couleurImageSelectionee = Color.yellow;
+    [SerializeField] private Color couleurImageNonSelectionee = Color.yellow;
+    [SerializeField] private Color couleurBarreNormale = Color.white;
     [SerializeField] private Color couleurBarrePleine = Color.green;
     [SerializeField] private float echelleNormale = 1f;
     [SerializeField] private float echelleSelection = 1.1f;
@@ -43,6 +48,9 @@ public class OneButtonMenu : MonoBehaviour
     private bool boutonEnfonce = false;
     private InputActionMap actionMapUI;
     private InputAction boutonAction;
+    private MotionHandle handle;
+    private AudioSource sfxSwitch;
+    private AudioSource sfxProgressBar;
 
     void Awake()
     {
@@ -82,13 +90,23 @@ public class OneButtonMenu : MonoBehaviour
         if (barreProgression != null)
         {
             barreProgression.fillAmount = 0f;
-            barreProgression.color = couleurNormale;
+            barreProgression.color = couleurBarreNormale;
         }
 
         if (texteInstruction != null)
-            texteInstruction.text = "Appui court : Changer | Appui long : Valider";
+            texteInstruction.text = "Appui court : Changer Appui long : Valider";
 
-        // Met à jour l'affichage initial
+        // Configure les SFX
+        if (sfxMakerSwitchSound != null)
+            sfxSwitch = sfxMakerSwitchSound.GetComponent<AudioSource>();
+
+        if (sfxMakerProgressBar != null)
+            sfxProgressBar = sfxMakerProgressBar.GetComponent<AudioSource>();
+
+        // Remettre le choix du dernier jeu 
+        indexActuel = StaticInfo.lastGamePlayed;
+
+        // Met ï¿½ jour l'affichage initial
         MettreAJourSelection();
     }
 
@@ -100,6 +118,8 @@ public class OneButtonMenu : MonoBehaviour
 
         if (boutonAction.WasPressedThisFrame())
         {
+            sfxProgressBar.Play();
+            handle = LMotion.Create(0f, 2f, tempsPourValider).BindToPitch(sfxProgressBar);
             boutonEnfonce = true;
             tempsAppui = 0f;
         }
@@ -111,7 +131,7 @@ public class OneButtonMenu : MonoBehaviour
             if (barreProgression != null)
             {
                 barreProgression.fillAmount = tempsAppui / tempsPourValider;
-                barreProgression.color = Color.Lerp(couleurNormale, couleurBarrePleine,
+                barreProgression.color = Color.Lerp(couleurBarreNormale, couleurBarrePleine,
                     tempsAppui / tempsPourValider);
             }
 
@@ -126,6 +146,9 @@ public class OneButtonMenu : MonoBehaviour
         {
             if (tempsAppui < tempsPourValider && tempsDepuisDernierChangement >= tempsEntreChangements)
             {
+                sfxProgressBar.Stop();
+                handle.TryCancel();
+                sfxSwitch.Play();
                 ChangerJeu();
             }
 
@@ -135,7 +158,7 @@ public class OneButtonMenu : MonoBehaviour
             if (barreProgression != null)
             {
                 barreProgression.fillAmount = 0f;
-                barreProgression.color = couleurNormale;
+                barreProgression.color = couleurBarreNormale;
             }
         }
     }
@@ -149,7 +172,7 @@ public class OneButtonMenu : MonoBehaviour
 
     void MettreAJourSelection()
     {
-        // Réinitialise tous les conteneurs
+        // Rï¿½initialise tous les conteneurs
         if (conteneurJeu1 != null)
         {
             conteneurJeu1.transform.localScale = Vector3.one * echelleNormale;
@@ -164,9 +187,10 @@ public class OneButtonMenu : MonoBehaviour
                 imageJeu2.color = Color.white;
         }
 
-        // Met en surbrillance le jeu sélectionné
+        // Met en surbrillance le jeu sï¿½lectionnï¿½
         GameObject conteneurSelectionne = indexActuel == 0 ? conteneurJeu1 : conteneurJeu2;
         Image imageSelectionnee = indexActuel == 0 ? imageJeu1 : imageJeu2;
+        Image imageNonSelectionnee = indexActuel == 0 ? imageJeu2 : imageJeu1;
 
         if (conteneurSelectionne != null)
         {
@@ -175,7 +199,12 @@ public class OneButtonMenu : MonoBehaviour
 
         if (imageSelectionnee != null)
         {
-            imageSelectionnee.color = couleurSelection;
+            imageSelectionnee.color = couleurImageSelectionee;
+        }
+
+        if (imageNonSelectionnee != null)
+        {
+            imageNonSelectionnee.color = couleurImageNonSelectionee;
         }
     }
 
@@ -185,7 +214,7 @@ public class OneButtonMenu : MonoBehaviour
 
         if (indexActuel < scenesDesJeux.Length)
         {
-            SceneManager.LoadScene(scenesDesJeux[indexActuel]);
+            SceneManager.LoadSceneAsync(scenesDesJeux[indexActuel]);
         }
     }
 
@@ -201,7 +230,7 @@ public class OneButtonMenu : MonoBehaviour
             temps += Time.deltaTime;
             float progression = temps / duree;
 
-            // Animation élastique
+            // Animation ï¿½lastique
             float t = Mathf.Sin(progression * Mathf.PI * 0.5f);
             cible.localScale = Vector3.Lerp(echelleInitiale, echelleCible, t);
 
