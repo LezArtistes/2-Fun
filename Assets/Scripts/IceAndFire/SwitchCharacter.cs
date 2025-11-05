@@ -127,13 +127,13 @@ public class SwitchCharacter : MonoBehaviour
     private void OnPlayerOneRelease(InputAction.CallbackContext context)
     {
         playerOneHeld = false;
-        TryRestoreSquares();
+        TryRestoreSquares(false);
     }
 
     private void OnPlayerTwoRelease(InputAction.CallbackContext context)
     {
         playerTwoHeld = false;
-        TryRestoreSquares();
+        TryRestoreSquares(true);
     }
 
     private void SwapSquares()
@@ -161,7 +161,7 @@ public class SwitchCharacter : MonoBehaviour
         playersHidden = true;
     }
 
-    private void TryRestoreSquares()
+    private void TryRestoreSquares(bool fireForward)
     {
         if ((!playerOneHeld || !playerTwoHeld) && playersHidden)
         {
@@ -172,6 +172,9 @@ public class SwitchCharacter : MonoBehaviour
             SetSquareVisible(square2, true);
 
             playersHidden = false;
+
+            if (fireForward) OnPlayerOnePress(new InputAction.CallbackContext());
+            else OnPlayerTwoPress(new InputAction.CallbackContext());
         }
     }
 
